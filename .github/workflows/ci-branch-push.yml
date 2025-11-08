@@ -29,8 +29,8 @@ jobs:
         run: npm run test:unit
       - name: E2E Tests - Cypress
         run: npm run test:e2e
-#
-#        - name: Simple Build Success Message
-#          run: echo "✅ Match-Hub-UI build check passed quickly."
+
+      - name: Simple Build Success Message
+        run: echo "✅ CanYa build check passed quickly."
 
 
