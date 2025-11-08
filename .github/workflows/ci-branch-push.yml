@@ -25,7 +25,7 @@ jobs:
         run: npm install --no-fund
         working-directory: ./
 
-      - name: Unit Tests with Jasmine & Karma
+      - name: Unit Tests - Jasmine & Karma
         run: npm run test:unt
 #
 #        - name: Simple Build Success Message
