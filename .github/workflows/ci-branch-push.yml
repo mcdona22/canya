@@ -26,7 +26,7 @@ jobs:
         working-directory: ./
 
       - name: Unit Tests - Jasmine & Karma
-        run: npm run test:unt
+        run: npm run test:unit
 #
 #        - name: Simple Build Success Message
 #          run: echo "✅ Match-Hub-UI build check passed quickly."
