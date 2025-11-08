@@ -2,7 +2,7 @@ name: Branch-only CI Workflow
 on:
   push:
     branches:
-      - "*"
+      - "**"
       - "!main"
     paths:
       - "./**"
