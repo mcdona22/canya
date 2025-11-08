@@ -19,11 +19,11 @@ describe('Basic App Launch', () => {
     ];
 
     it('should have the correct number of menu items', () => {
-      cy.get('.menu-items ').should('be.visible');
-      cy.get('.menu-item ').should('have.length', menuOptions.length);
+      cy.get('.menu-items').should('be.visible');
+      cy.get('.menu-item').should('have.length', menuOptions.length);
     });
     menuOptions.forEach((item) => {
-      it(`should show the "${item.label}" item"`, () => {
+      it(`should show the "${item.label}" item`, () => {
         const dataCss = `.data-item-${item.tag}`;
         console.log('button text', cy.get(dataCss));
         cy.get(dataCss).should('be.visible').and('include.text', item.label);
