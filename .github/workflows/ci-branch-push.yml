@@ -20,10 +20,10 @@ jobs:
           node-version: "20"
           cache-dependency-path: "./package-lock.json"
 
-#        - name: Install Dependencies
-#          # Using 'npm install' to bypass strict lock file checks
-#          run: npm install --no-fund
-#          working-directory: ./
+      - name: Install Dependencies
+        # Using 'npm install' to bypass strict lock file checks
+        run: npm install --no-fund
+        working-directory: ./
 #
 #        - name: Simple Build Success Message
 #          run: echo "✅ Match-Hub-UI build check passed quickly."
