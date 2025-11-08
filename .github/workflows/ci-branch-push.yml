@@ -5,29 +5,30 @@ on:
       - "**"
       - "!main"
     paths:
-      - "/**"
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
-    jobs:
-      simple-build:
-        name: Verify Build
-        runs-on: ubuntu-latest
-        steps:
-          - name: Check out code
-            uses: actions/checkout@v4
+      - "./**"
+  concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+  jobs:
+    simple-build:
+      name: Verify Build
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out code
+          uses: actions/checkout@v4
 
-          - name: Setup node and cache dependencies
-            uses: actions/setup-node@v4
-            with:
-              node-version: "20"
-              cache-dependency-path: "./package-lock.json"
-          - name: Install Dependencies
-            # Using 'npm install' to bypass strict lock file checks
-            run: npm install --no-fund
-            working-directory: ./
+        - name: Setup node and cache dependencies
+          uses: actions/setup-node@v4
+          with:
+            node-version: "20"
+            cache-dependency-path: "./package-lock.json"
 
-          - name: Simple Build Success Message
-            run: echo "✅ Match-Hub-UI build check passed quickly."
+        - name: Install Dependencies
+          # Using 'npm install' to bypass strict lock file checks
+          run: npm install --no-fund
+          working-directory: ./
+
+        - name: Simple Build Success Message
+          run: echo "✅ Match-Hub-UI build check passed quickly."
 
 
