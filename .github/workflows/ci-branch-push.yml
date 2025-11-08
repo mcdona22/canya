@@ -1,4 +1,4 @@
-name: 💡 Branch CI Workflow
+name: 💡 Branch-only CI Workflow
 on:
   push:
     branches:
