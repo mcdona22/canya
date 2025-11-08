@@ -1,11 +1,11 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="data-app-container">
   <mat-sidenav/>
   <mat-sidenav-content>
     <mat-toolbar class="main-toolbar">
       <div class="menu-items centred-max-width ">
 
 
-        <div class="app-title "> Canya</div>
+        <div class="app-title "> CanYa</div>
         <div class="spacer"></div>
         @for (option of menuOptions; track option.label) {
           <a
@@ -21,7 +21,10 @@
 
 
     </mat-toolbar>
-    <router-outlet/>
+    <div class="router-outlet">
+
+      <router-outlet/>
+    </div>
 
   </mat-sidenav-content>
 
