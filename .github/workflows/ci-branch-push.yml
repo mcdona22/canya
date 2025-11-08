@@ -24,6 +24,9 @@ jobs:
         # Using 'npm install' to bypass strict lock file checks
         run: npm install --no-fund
         working-directory: ./
+
+      - name: Unit Tests with Jasmine & Karma
+        run: npm run test
 #
 #        - name: Simple Build Success Message
 #          run: echo "✅ Match-Hub-UI build check passed quickly."
