@@ -4,8 +4,8 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 const menuOptions = [
-  { label: 'Home', path: '' },
-  { label: 'Gangs', path: '/gangs' },
+  { label: 'Home', path: '', tag: 'landing' },
+  { label: 'Gangs', path: '/gangs', tag: 'gangs' },
 ];
 
 @Component({
