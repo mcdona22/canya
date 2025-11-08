@@ -1,0 +1,10 @@
+@use 'custom-theme-vars' as vars;
+
+.centred-max-width {
+  max-width: vars.$app-max-content-width;
+  margin: 0 auto;
+}
+
+.flex-spacer {
+  flex: 1;
+}
