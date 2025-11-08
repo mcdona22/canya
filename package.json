@@ -4,12 +4,19 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:e2e": "ng serve --port 4300",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:unit": "ng test --no-watch --browsers=ChromeHeadless ",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test start:e2e http-get://localhost:4300 cypress:run"
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.2.10",
+    "@angular/material": "^20.2.10",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
@@ -31,6 +38,10 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "cypress": "^15.5.0",
+    "start-server-and-test": "^2.0.3",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.0.0"
   }
 }

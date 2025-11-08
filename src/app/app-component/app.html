@@ -1,0 +1,32 @@
+<mat-sidenav-container class="data-app-container">
+  <mat-sidenav/>
+  <mat-sidenav-content>
+    <mat-toolbar class="main-toolbar">
+      <div class="menu-items centred-max-width ">
+
+
+        <div class="app-title"> CanYa 2</div>
+        <div class="spacer"></div>
+        @for (option of menuOptions; track option.label) {
+          <a
+            routerLink="{{option.path}}"
+            class="menu-item data-item-{{option.tag}}"
+            routerLinkActive="menu-item-selected"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >{{ option.label }}</a>
+        }
+
+      </div>
+
+
+    </mat-toolbar>
+    <div class="router-outlet">
+
+      <router-outlet/>
+    </div>
+
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>
+

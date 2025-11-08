@@ -1,0 +1,42 @@
+@use '../../styles/app-utilities' as app;
+
+.app-title {
+  font-size: xx-large;
+  letter-spacing: 0.25rem;
+}
+
+.main-toolbar {
+  --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-primary-container);
+
+}
+
+.menu-items {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.menu-item {
+  //border: 1px var(--mat-sys-on-primary-container) solid;
+  padding: .25rem .75rem;
+  text-decoration: none;
+  color: var(--mat-sys-on-primary-container);
+  font-size: medium;
+}
+
+.menu-items > .menu-item-selected {
+  //border-right: 1px solid var(--mat-sys-primary-fixed-dim);
+  border-bottom: 1px solid var(--mat-sys-primary-fixed-dim);
+  letter-spacing: .25rem; /* New letter spacing */
+  //border-radius: 8px;
+  font-size: large;
+
+
+}
+
