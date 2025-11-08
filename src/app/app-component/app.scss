@@ -15,6 +15,7 @@
   display: flex;
   width: 100%;
   gap: 1rem;
+  align-items: center;
 }
 
 .spacer {
@@ -22,16 +23,20 @@
 }
 
 .menu-item {
-  border: 1px var(--mat-sys-on-primary-container) solid;
+  //border: 1px var(--mat-sys-on-primary-container) solid;
   padding: .25rem .75rem;
-  border-radius: 8px;
+  text-decoration: none;
+  color: var(--mat-sys-on-primary-container);
+  font-size: medium;
 }
 
-.wot {
-  width: 100%;
-  display: flex;
-  justify-content: stretch;
-  align-items: center;
-  gap: 1rem;
+.menu-items > .menu-item-selected {
+  //border-right: 1px solid var(--mat-sys-primary-fixed-dim);
+  border-bottom: 1px solid var(--mat-sys-primary-fixed-dim);
+  letter-spacing: .25rem; /* New letter spacing */
+  //border-radius: 8px;
+  font-size: large;
+
+
 }
 

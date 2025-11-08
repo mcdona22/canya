@@ -7,12 +7,22 @@
 
         <div class="app-title "> Canya</div>
         <div class="spacer"></div>
-        <div class="menu-item ">home</div>
-        <div class="menu-item =">gangs</div>
+        @for (option of menuOptions; track option.label) {
+          <a
+            routerLink="{{option.path}}"
+            class="menu-item"
+            routerLinkActive="menu-item-selected"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ option.label }}</a>
+        }
+
       </div>
 
 
     </mat-toolbar>
+    <router-outlet/>
+
   </mat-sidenav-content>
 
 
