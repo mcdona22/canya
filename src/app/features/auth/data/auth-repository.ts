@@ -8,7 +8,7 @@ import {
   User,
 } from '@angular/fire/auth';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { AppUser } from './app-user';
+import { AppUser } from '../../app-user/data/app-user';
 import { map } from 'rxjs';
 
 @Injectable({

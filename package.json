@@ -12,7 +12,9 @@
     "test:unit:watch": "ng test --browsers=ChromeHeadless ",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test:e2e": "start-server-and-test start:e2e http-get://localhost:4300 cypress:run"
+    "test:e2e": "start-server-and-test start:e2e http-get://localhost:4300 cypress:run",
+    "emulators-start": "firebase emulators:start --only auth,firestore,storage --import exports/canya-data-export",
+    "emulators-export": "firebase emulators:export exports/canya-data-export"
   },
   "private": true,
   "dependencies": {
