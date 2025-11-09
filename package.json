@@ -16,13 +16,15 @@
   "private": true,
   "dependencies": {
     "@angular/cdk": "^20.2.10",
-    "@angular/material": "^20.2.10",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
+    "@angular/fire": "^20.0.1",
     "@angular/forms": "^20.0.0",
+    "@angular/material": "^20.2.10",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "firebase": "^12.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -32,16 +34,16 @@
     "@angular/cli": "^20.0.1",
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
+    "cypress": "^15.5.0",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2",
-    "cypress": "^15.5.0",
-    "start-server-and-test": "^2.0.3",
     "mochawesome": "^7.1.4",
-    "mochawesome-merge": "^5.0.0"
+    "mochawesome-merge": "^5.0.0",
+    "start-server-and-test": "^2.0.3",
+    "typescript": "~5.8.2"
   }
 }
