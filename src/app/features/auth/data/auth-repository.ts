@@ -15,8 +15,8 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthRepository {
-  authenticated = computed(() => this.authState() != null);
   private auth = inject(Auth);
+  authenticated = computed(() => this.authState() != null);
   private authState$ = authState(this.auth);
   authState = toSignal<User | null>(this.authState$, { initialValue: null });
   currentUser$ = this.authState$.pipe(

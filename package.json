@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:unit": "ng test --no-watch --browsers=ChromeHeadless ",
+    "test:unit:watch": "ng test --browsers=ChromeHeadless ",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:e2e": "start-server-and-test start:e2e http-get://localhost:4300 cypress:run"
