@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth-service';
+import { AppUserRepository } from '../../app-user/data/app-user-repository';
 
 const mockAuthRepository = {
   // Mock the signal properties used by AuthService
@@ -12,12 +13,19 @@ const mockAuthRepository = {
   signOut: () => Promise.resolve(),
 };
 
+const mockAppUserRepository = {
+  writeDocument: () => Promise.resolve(),
+};
+
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: AuthService, useValue: mockAuthRepository }],
+      providers: [
+        { provide: AuthService, useValue: mockAuthRepository },
+        { provide: AppUserRepository, useValue: mockAppUserRepository },
+      ],
     });
     service = TestBed.inject(AuthService);
   });
