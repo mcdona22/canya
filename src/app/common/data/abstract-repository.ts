@@ -21,15 +21,23 @@ export class AbstractRepository<T extends IAppEntity> {
     const ref = doc(docCollection, document.id);
     const data = this.converter.toFirestore(document as T);
 
-    const response = await setDoc(ref, data);
-    console.log(`Response`, response);
+    await setDoc(ref, data);
   }
 
+  /**
+   *
+   * @private converter
+   * handles mapping between firebase and app entities
+   *
+   * toFirestore
+   *  - removes the id before its pushed to the datastore
+   */
   private converter: FirestoreDataConverter<IAppEntity> = {
-    toFirestore(doc: IAppEntity) {
+    toFirestore(doc: T) {
       const { id, ...rest } = doc;
       return rest;
     },
+
     fromFirestore(snapshot: QueryDocumentSnapshot) {
       const data = snapshot.data();
       if (!data) {

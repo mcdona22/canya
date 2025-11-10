@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthButton } from '../features/auth/presentation/auth-button/auth-button';
 
 const menuOptions = [
   { label: 'Home', path: '', tag: 'landing' },
@@ -15,6 +16,7 @@ const menuOptions = [
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    AuthButton,
   ],
   selector: 'app-root',
   styleUrl: './app.scss',

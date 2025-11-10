@@ -36,7 +36,7 @@ export class AuthRepository {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(this.auth, provider);
       console.log(`[AUTH REPO] Sign-In Success for user: ${result.user.uid}`);
-      console.log(`Firebase User`, result.user);
+      // console.log(`Firebase User`, result.user);
       const { uid, displayName, email, photoURL } = result.user;
       const appUser = {
         id: uid,
