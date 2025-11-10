@@ -23,7 +23,7 @@ export class AuthRepository {
     map((user) => {
       if (user == null) return null;
       const { uid, displayName, email, photoURL } = user;
-      return { uid, displayName, email, photoURL } as AppUser;
+      return { id: uid, displayName, email, photoURL } as AppUser;
     }),
   );
   currentUser = toSignal<AppUser | null>(this.currentUser$, {
@@ -39,7 +39,7 @@ export class AuthRepository {
       console.log(`Firebase User`, result.user);
       const { uid, displayName, email, photoURL } = result.user;
       const appUser = {
-        uid,
+        id: uid,
         displayName,
         email,
         photoURL,
