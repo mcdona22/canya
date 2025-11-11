@@ -1,16 +1,19 @@
-@if (isAuthenticated()) {
-  <button
-    mat-icon-button
-    (click)="onSignOutClicked()"
-    matTooltip="Sign out of application"
-  >
-    <mat-icon>logout</mat-icon>
-  </button>
-} @else {
-  <cool-google-button
-    color="dark"
-    (click)="onGoogleLoginClicked()">
-    Sign In
-  </cool-google-button>
-}
+<div class="data-auth-button">
+
+  @if (isAuthenticated()) {
+    <button
+      mat-icon-button
+      (click)="onSignOutClicked()"
+      matTooltip="Sign out of application"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+  } @else {
+    <cool-google-button
+      color="dark"
+      (click)="onGoogleLoginClicked()">
+      Sign In
+    </cool-google-button>
+  }
+</div>
 
