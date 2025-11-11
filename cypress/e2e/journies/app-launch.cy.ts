@@ -12,7 +12,7 @@ describe('Basic App Launch', () => {
     cy.get('.app-title').should('be.visible').and('contain.text', 'CanYa');
   });
   describe('should show correct menu options', () => {
-    const expectedMenuItems = 2;
+    const expectedMenuItems = 4;
     const menuOptions = [
       { label: 'Home', path: '', tag: 'landing' },
       { label: 'Gangs', path: '/gangs', tag: 'gangs' },
@@ -20,7 +20,7 @@ describe('Basic App Launch', () => {
 
     it('should have the correct number of menu items', () => {
       cy.get('.menu-items').should('be.visible');
-      cy.get('.menu-item').should('have.length', menuOptions.length);
+      cy.get('.menu-item:visible').should('have.length', menuOptions.length);
     });
 
     it('should have the auth button component', () => {

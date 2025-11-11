@@ -1,9 +1,27 @@
 @use '../../styles/app-utilities' as app;
+@use '../../styles/custom-theme-vars' as vars;
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav-content {
+  //display: flex;
+  //flex-direction: column;
+}
+
+mat-sidenav {
+  padding: 12px 12px;
+  border-left: 1px solid var(--mat-sys-on-primary-container);;
+
+  width: 250px;
+}
 
 .app-title {
   font-size: xx-large;
   letter-spacing: 0.25rem;
 }
+
 
 .main-toolbar {
   --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
@@ -11,12 +29,18 @@
 
 }
 
-.menu-items {
+
+.app-bar-items {
   display: flex;
   width: 100%;
   gap: 1rem;
   align-items: center;
 }
+
+.menu-items {
+  display: none; // mobile first
+}
+
 
 .spacer {
   flex: 1;
@@ -39,4 +63,37 @@
 
 
 }
+
+.menu-items-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+
+  .menu-item {
+    font-size: x-large;
+
+  }
+}
+
+.menu-toggle-button {
+  display: block;
+}
+
+@media(min-width: vars.$breakpoint-mobile) {
+  .menu-toggle-button {
+    display: none;
+
+  }
+
+  .menu-items {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+
+}
+
 
