@@ -14,7 +14,8 @@
     "cypress:run": "cypress run",
     "test:e2e": "start-server-and-test start:e2e http-get://localhost:4300 cypress:run",
     "emulators-start": "firebase emulators:start --only auth,firestore,storage --import exports/canya-data-export",
-    "emulators-export": "firebase emulators:export exports/canya-data-export"
+    "emulators-export": "firebase emulators:export exports/canya-data-export",
+    "test:push": "npm run test:unit && npm run test:e2e && echo 'Tests OK - git push'"
   },
   "private": true,
   "dependencies": {

@@ -2,6 +2,7 @@
 
   @if (isAuthenticated()) {
     <button
+      class="data-is-auth"
       mat-icon-button
       (click)="onSignOutClicked()"
       matTooltip="Sign out of application"
@@ -10,6 +11,8 @@
     </button>
   } @else {
     <cool-google-button
+      class="data-not-auth"
+
       color="dark"
       (click)="onGoogleLoginClicked()">
       Sign In
