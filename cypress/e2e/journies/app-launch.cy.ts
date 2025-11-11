@@ -11,6 +11,7 @@ describe('Basic App Launch', () => {
   it('should show the app name', () => {
     cy.get('.app-title').should('be.visible').and('contain.text', 'CanYa');
   });
+
   describe('should show correct menu options', () => {
     const expectedMenuItems = 4;
     const menuOptions = [
@@ -33,5 +34,11 @@ describe('Basic App Launch', () => {
         cy.get(dataCss).should('be.visible').and('include.text', item.label);
       });
     });
+  });
+
+  describe('Responsive layout', () => {
+    it('should show the menu option');
+    it('should not show the app-bar menu options');
+    it('should show the correct items when menu is clicked');
   });
 });
