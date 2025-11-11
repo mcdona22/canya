@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthButton } from '../features/auth/presentation/auth-button/auth-button';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 const menuOptions = [
   { label: 'Home', path: '', tag: 'landing' },
@@ -17,6 +19,8 @@ const menuOptions = [
     RouterLink,
     RouterLinkActive,
     AuthButton,
+    MatIconButton,
+    MatIcon,
   ],
   selector: 'app-root',
   styleUrl: './app.scss',
@@ -24,4 +28,17 @@ const menuOptions = [
 })
 export class App {
   menuOptions = menuOptions;
+  sideNavOpen = signal(false);
+
+  toggleSideNav() {
+    this.sideNavOpen.set(!this.sideNavOpen());
+  }
+
+  sideNavClose() {
+    this.sideNavOpen.set(false);
+  }
+
+  onSideNavClosed() {
+    this.sideNavOpen.set(false);
+  }
 }

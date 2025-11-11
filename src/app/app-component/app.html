@@ -1,25 +1,50 @@
 <mat-sidenav-container class="data-app-container">
-  <mat-sidenav/>
+  <mat-sidenav class=""
+               [opened]="sideNavOpen()" position="end"
+               (closed)="onSideNavClosed()"
+  >
+    <div class="menu-items-mobile ">
+
+      <app-auth-button/>
+      @for (option of menuOptions; track option.label) {
+        <a
+          routerLink="{{option.path}}"
+          (click)="sideNavClose()"
+          class="menu-item
+           data-item-{{option.tag}}"
+          routerLinkActive="menu-item-selected"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >{{ option.label }}</a>
+      }
+
+
+    </div>
+  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="main-toolbar">
-      <div class="menu-items centred-max-width ">
-
+      <div class="app-bar-items centred-max-width ">
 
         <div class="app-title"> CanYa</div>
         <div class="spacer"></div>
-        @for (option of menuOptions; track option.label) {
-          <a
-            routerLink="{{option.path}}"
-            class="menu-item data-item-{{option.tag}}"
-            routerLinkActive="menu-item-selected"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >{{ option.label }}</a>
-        }
-        <div>
-          <app-auth-button/>
-          
-        </div>
+        <div class="menu-items">
 
+          @for (option of menuOptions; track option.label) {
+            <a
+              routerLink="{{option.path}}"
+              class="menu-item data-item-{{option.tag}}"
+              routerLinkActive="menu-item-selected"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >{{ option.label }}</a>
+          }
+
+          <app-auth-button/>
+
+        </div>
+        <button (click)="toggleSideNav()"
+                class="menu-toggle-button"
+                mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
       </div>
 
 
