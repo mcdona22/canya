@@ -17,7 +17,19 @@
   // Main text and icon color that sits on the dark background
   --mat-sys-on-surface: #{vars.$custom-dark-on-surface-color};
   --mat-sys-on-background: #{vars.$custom-dark-on-surface-color};
+
+  @include mat.tooltip-overrides((
+    //container-color: var(--mat-sys-background),
+    //container-color: black,
+    //container-color: var(--mat-sys-on-secondary-container),
+    container-shape: 16px,
+    //supporting-text-color:yellow
+    supporting-text-color:var(--mat-sys-on-backgorund),
+    supporting-text-size: 16px,
+  ));
+
 }
+
 
 html {
   @include mat.theme((

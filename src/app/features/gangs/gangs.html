@@ -2,26 +2,6 @@
   <h3>Messing with Authentication</h3>
   <p>We are going to build out the auth service here. Lets go</p>
 
-  <p>Authenticated is {{ isAuthenticated() }}</p>
-
-  <p>"3UtAVzGKK1hFa5gqNWT8IHzUseC2"
-  </p>
-  <div class="buttons">
-
-    <div class="auth-button">
-      <button (click)="toggleAuthenticated()" [disabled]="isAuthenticated()" mat-stroked-button>Sign In</button>
-    </div>
-    <div class="auth-button">
-      <button (click)="toggleAuthenticated()" [disabled]="!isAuthenticated()" mat-stroked-button>Sign Out</button>
-    </div>
-    <div class="auth-button">
-      <button (click)="writeAppUser() " mat-raised-button>Create</button>
-    </div>
-  </div>
-
-
-  @if (currentUser()) {
-    <h4>Current User</h4>
-    {{ currentUser() | json }}
-  }
 </div>
+
+
