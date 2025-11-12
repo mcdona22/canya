@@ -1,7 +1,7 @@
 /// <reference types="jasmine" />
 
 import { AppUser } from '../../app-user/data/app-user';
-import { signal } from '@angular/core';
+import { computed, signal } from '@angular/core';
 import { AuthService } from './auth-service';
 
 export function createAuthServiceSpy(): jasmine.SpyObj<AuthService> {
@@ -20,6 +20,7 @@ export function createAuthServiceSpy(): jasmine.SpyObj<AuthService> {
       // Mock the public signal properties used by the component
       authenticated: signal(false),
       currentUser: signal<AppUser | null>(null),
+      authServiceLoading: computed<boolean>(() => false),
     },
   );
 
