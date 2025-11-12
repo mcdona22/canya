@@ -1,4 +1,20 @@
+:host {
+  width: 50px;
+  // 1. Start fully transparent (hidden)
+  opacity: 0;
+  // 2. Define the transition: opacity over 300ms
+  transition: opacity .5s ease-in;
+  // 3. Ensure the host element takes up space immediately to prevent layout shifts
+  display: inline-block;
+  vertical-align: middle;
+}
+
+:host(.is-ready) {
+  opacity: 1;
+}
 
 mat-icon {
   color: var(--mat-sys-on-primary-container);;
 }
+
+
