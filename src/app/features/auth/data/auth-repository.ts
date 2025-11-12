@@ -1,4 +1,4 @@
-import { computed, inject, Injectable } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import {
   Auth,
   authState,
@@ -16,9 +16,12 @@ import { map } from 'rxjs';
 })
 export class AuthRepository {
   private auth = inject(Auth);
+  private _isReady = signal(false);
+
   authenticated = computed(() => this.authState() != null);
   private authState$ = authState(this.auth);
   authState = toSignal<User | null>(this.authState$, { initialValue: null });
+
   currentUser$ = this.authState$.pipe(
     map((user) => {
       if (user == null) return null;
@@ -26,8 +29,9 @@ export class AuthRepository {
       return { id: uid, displayName, email, photoURL } as AppUser;
     }),
   );
+
   currentUser = toSignal<AppUser | null>(this.currentUser$, {
-    initialValue: null,
+    initialValue: undefined,
   });
 
   async signInWithGoogle(): Promise<AppUser | null> {

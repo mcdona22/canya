@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { computed, inject, Injectable } from '@angular/core';
 import { AuthRepository } from '../data/auth-repository';
 import { AppUser } from '../../app-user/data/app-user';
 import { AppUserRepository } from '../../app-user/data/app-user-repository';
@@ -11,6 +11,7 @@ export class AuthService {
   appUserRepository = inject(AppUserRepository);
   authenticated = this.authRepository.authenticated;
   currentUser = this.authRepository.currentUser;
+  authServiceLoading = computed(() => this.currentUser() === undefined);
 
   async signInWithGoogle(): Promise<AppUser | null> {
     const appUser = await this.authRepository.signInWithGoogle();

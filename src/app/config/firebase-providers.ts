@@ -11,11 +11,11 @@ import {
 export const firebaseProviders = [
   provideFirebaseApp(() => {
     setLogLevel(LogLevel.VERBOSE);
-    console.log(`Initialising Firebase App`);
+    console.log(`INIT :Initialising Firebase App`);
     return initializeApp(environment.firebase);
   }),
   provideAuth(() => {
-    console.log(`Providing Authentication`);
+    console.log(`INIT Providing Authentication`);
     const auth = getAuth();
     if (environment.useEmulators) {
       console.log(`Using Auth emulator`);
@@ -25,7 +25,7 @@ export const firebaseProviders = [
   }),
 
   provideFirestore(() => {
-    console.log(`PROVIDERS: providing firestore`);
+    console.log(`INIT: providing firestore`);
     const firestore = getFirestore();
     if (environment.useEmulators) {
       console.log(`Using firestore emulator`);

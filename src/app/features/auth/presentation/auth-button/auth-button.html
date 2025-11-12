@@ -1,22 +1,30 @@
-<div class="data-auth-button">
+@if (!isLoading()) {
 
-  @if (isAuthenticated()) {
-    <button
-      class="data-is-auth"
-      mat-icon-button
-      (click)="onSignOutClicked()"
-      matTooltip="Sign out of application"
-    >
-      <mat-icon>logout</mat-icon>
-    </button>
-  } @else {
-    <cool-google-button
-      class="data-not-auth"
 
-      color="dark"
-      (click)="onGoogleLoginClicked()">
-      Sign In
-    </cool-google-button>
-  }
-</div>
+  <div class="data-auth-button">
 
+    @if (isAuthenticated()) {
+      <button
+        class="data-is-auth"
+        mat-icon-button
+        (click)="onSignOutClicked()"
+        matTooltip="Sign out of application"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    } @else {
+      <cool-google-button
+        class="data-not-auth"
+
+        color="dark"
+        (click)="onGoogleLoginClicked()">
+        Sign In
+      </cool-google-button>
+    }
+  </div>
+}
+<!--@else {-->
+<!--  <div class="loading">-->
+<!--    <mat-spinner diameter="20"/>-->
+<!--  </div>-->
+<!--}-->
