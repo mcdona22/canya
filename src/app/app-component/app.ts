@@ -13,7 +13,7 @@ const menuOptions = [
   {
     label: 'Canyas',
     path: `/${canyasBasePath}`,
-    tag: 'Canyas',
+    tag: 'canyas',
   },
 ];
 

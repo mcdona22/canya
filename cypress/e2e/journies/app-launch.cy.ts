@@ -17,6 +17,7 @@ describe('Basic App Launch', () => {
     const menuOptions = [
       { label: 'Home', path: '', tag: 'landing' },
       { label: 'Gangs', path: '/gangs', tag: 'gangs' },
+      { label: 'Canyas', path: '/canya', tag: 'canyas' },
     ];
 
     it('should have the correct number of menu items', () => {
