@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './landing-page.scss',
 })
 export class LandingPage {
-
+  title = input('New Canya');
 }

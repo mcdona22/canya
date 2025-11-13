@@ -5,10 +5,16 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthButton } from '../features/auth/presentation/auth-button/auth-button';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { canyasBasePath } from '../routing/app-routes';
 
 const menuOptions = [
   { label: 'Home', path: '', tag: 'landing' },
   { label: 'Gangs', path: '/gangs', tag: 'gangs' },
+  {
+    label: 'Canyas',
+    path: `/${canyasBasePath}`,
+    tag: 'Canyas',
+  },
 ];
 
 @Component({

@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { CoolGoogleButtonComponent } from '@angular-cool/social-login-buttons';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-auth-button',
@@ -13,7 +12,6 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     MatTooltipModule,
     CoolGoogleButtonComponent,
     MatIconModule,
-    MatProgressSpinner,
   ],
   templateUrl: './auth-button.html',
   styleUrl: './auth-button.scss',

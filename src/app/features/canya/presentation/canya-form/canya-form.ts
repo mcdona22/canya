@@ -1,0 +1,69 @@
+import { Component, inject, input } from '@angular/core';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { JsonPipe } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+
+@Component({
+  selector: 'app-canya-form',
+  imports: [
+    ReactiveFormsModule,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatButtonModule,
+    MatIcon,
+    JsonPipe,
+  ],
+  templateUrl: './canya-form.html',
+  styleUrl: './canya-form.scss',
+})
+export class CanyaForm {
+  readonly maxName = 20;
+  readonly maxDesc = 100;
+
+  formBuilder = inject(FormBuilder);
+
+  title = input('New Canya');
+  saveCaption = 'Save Canya';
+  readonly minDate = new Date();
+
+  form = this.formBuilder.group({
+    name: ['Book Club', [Validators.required]],
+    description: [null],
+    selectedDates: this.formBuilder.array([]) as FormArray,
+  });
+
+  formValue = toSignal(this.form.valueChanges);
+
+  onAddDate() {
+    console.log(`Adding an event date`);
+    const eventDateForm = this.formBuilder.group({
+      selectedDate: ['', [Validators.required]],
+      comments: [''],
+    });
+
+    this.selectedDates.push(eventDateForm);
+  }
+
+  get dateForms(): FormGroup[] {
+    return this.selectedDates.controls.map((fg) => fg as FormGroup);
+  }
+
+  get selectedDates() {
+    return this.form.controls.selectedDates;
+  }
+
+  onDeleteContactRow(index: number) {
+    this.selectedDates.removeAt(index);
+  }
+}
