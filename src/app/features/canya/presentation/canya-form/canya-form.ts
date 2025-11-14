@@ -99,9 +99,17 @@ export class CanyaForm {
     return this.form.controls.selectedDates;
   }
 
+  get eventDateEntries(): FormGroup[] {
+    return this.form.controls.selectedDates.controls as FormGroup[];
+  }
+
   onDeleteContactRow(index: number) {
     this.selectedDates.removeAt(index);
   }
 
   protected readonly onInput = onInput;
+
+  onCancelClick() {
+    console.log(`The form value`, this.eventDateEntries);
+  }
 }

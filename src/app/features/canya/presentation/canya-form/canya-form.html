@@ -35,7 +35,7 @@
       <button mat-icon-button (click)="onAddDate()">
         <mat-icon>add</mat-icon>
       </button>
-      <div class="prompt">Lets add some dates to choose from</div>
+      <div class="prompt">Lets add some event date informatoin</div>
     </div>
 
 
@@ -51,8 +51,7 @@
             <div class="delete-control" (click)="onDeleteContactRow(i)">
               <mat-icon>delete</mat-icon>
             </div>
-            <div class="event-date-control debug">
-
+            <div class="event-date-control">
               <mat-form-field>
                 <mat-label>Event Date</mat-label>
                 <input matInput
@@ -65,34 +64,49 @@
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker/>
               </mat-form-field>
+
             </div>
             <mat-form-field>
               <mat-label>Comments</mat-label>
               <input matInput placeholder="time slots etc" formControlName="comments">
+
             </mat-form-field>
 
 
           </div>
+          <div class="event-date-error">
+            <!--            <mat-error class="event-date-error">This is where error gans</mat-error>-->
+            @if (dateForm.get('selectedDate')?.errors! && !dateForm.get('selectedDate')?.pristine) {
+
+
+              @if (dateForm.get('selectedDate')?.hasError('matDatepickerParse')) {
+                <mat-error>You must have the date in the format dd/mm/yyyy</mat-error>
+              } @else if (dateForm.get('selectedDate')?.hasError('required')) {
+                <mat-error>You must have a date for the event</mat-error>
+              } @else if (dateForm.get('selectedDate')?.hasError('matDatepickerMin')) {
+                <mat-error>Your date cant be in the past</mat-error>
+              }
+
+              <!--              {{ dateForm.get('selectedDate')?.errors  |json }}-->
+
+            }
+            <!--            @if (eventDateEntries[i].controls['selectedDate']!.errors!['required']) {-->
+            <!--            }-->
+          </div>
+
 
         </div>
       }
-
-
     </div>
   </div>
 
   <div class=" buttons">
-    <button mat-stroked-button> Cancel</button>
+    <button mat-stroked-button (click)="onCancelClick()"> Cancel</button>
     <button [disabled]="!form.valid" mat-flat-button>{{ saveCaption }}</button>
   </div>
 
-
-  {{ formValue() | json }}
-  <hr/>
-
-  {{ title.errors | json }}
-
 </div>
+
 
 
 
