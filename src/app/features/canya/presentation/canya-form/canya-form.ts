@@ -6,12 +6,22 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import {
+  MatFormField,
+  MatLabel,
+  MatSuffix,
+} from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { JsonPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
+import {
+  MatDatepickerInput,
+  MatDatepickerModule,
+  MatDatepickerToggle,
+} from '@angular/material/datepicker';
+import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
 
 @Component({
   selector: 'app-canya-form',
@@ -23,6 +33,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatButtonModule,
     MatIcon,
     JsonPipe,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepickerModule,
+    MatLuxonDateModule,
+    MatSuffix,
   ],
   templateUrl: './canya-form.html',
   styleUrl: './canya-form.scss',
@@ -48,7 +63,7 @@ export class CanyaForm {
   onAddDate() {
     console.log(`Adding an event date`);
     const eventDateForm = this.formBuilder.group({
-      selectedDate: ['', [Validators.required]],
+      selectedDate: [null, [Validators.required]],
       comments: [''],
     });
 

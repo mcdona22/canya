@@ -27,9 +27,11 @@
     "@angular/fire": "^20.0.1",
     "@angular/forms": "^20.0.0",
     "@angular/material": "^20.2.10",
+    "@angular/material-luxon-adapter": "^20.2.13",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
     "firebase": "^12.5.0",
+    "luxon": "^3.7.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
