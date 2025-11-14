@@ -15,7 +15,6 @@ import {
 import { MatInput } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { JsonPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   MatDatepickerInput,
@@ -24,6 +23,9 @@ import {
 } from '@angular/material/datepicker';
 import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
 import { onInput } from '../../../../common/presentation/form-utils';
+import { ICanyaEvent, IDateSlot } from '../../data/i-canya-event';
+import { DateTime } from 'luxon';
+import { CanyaService } from '../../application/canya-service';
 
 @Component({
   selector: 'app-canya-form',
@@ -34,7 +36,6 @@ import { onInput } from '../../../../common/presentation/form-utils';
     MatLabel,
     MatButtonModule,
     MatIcon,
-    JsonPipe,
     MatDatepickerInput,
     MatDatepickerToggle,
     MatDatepickerModule,
@@ -51,6 +52,7 @@ export class CanyaForm {
   readonly maxDesc = 100;
 
   formBuilder = inject(FormBuilder);
+  canyaService = inject(CanyaService);
 
   pageTitle = input('New Canya');
   saveCaption = 'Save Canya';
@@ -111,5 +113,32 @@ export class CanyaForm {
 
   onCancelClick() {
     console.log(`The form value`, this.eventDateEntries);
+  }
+
+  onSave() {
+    if (!this.form.valid) {
+      console.warn(`The form is invalid`);
+      return;
+    }
+
+    const { name, description, selectedDates } = this.form.value;
+    const slots = selectedDates.map(
+      (slot: { selectedDate: DateTime; comments: string }) => {
+        return {
+          selectedDate: slot.selectedDate.toJSDate(),
+          comment: slot.comments ?? '',
+        } as IDateSlot;
+      },
+    );
+
+    console.log(`The mapped slots`, slots);
+
+    const canya: ICanyaEvent = {
+      name: name as string,
+      description: description ?? '',
+      slots: slots,
+    };
+
+    this.canyaService.createCanya(canya);
   }
 }

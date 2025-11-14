@@ -9,7 +9,7 @@ import {
   setDoc,
 } from '@angular/fire/firestore';
 
-export type EntityType = 'events' | 'app-users';
+export type EntityType = 'canya-events' | 'app-users';
 
 export class AbstractRepository<T extends IAppEntity> {
   protected constructor(public collectionName: EntityType) {}
@@ -17,8 +17,10 @@ export class AbstractRepository<T extends IAppEntity> {
   firestore = inject(Firestore);
 
   async writeDocument(document: IAppEntity) {
+    const docId = document.id || this.generateId();
+
     const docCollection = collection(this.firestore, this.collectionName);
-    const ref = doc(docCollection, document.id);
+    const ref = doc(docCollection, docId);
     const data = this.converter.toFirestore(document as T);
 
     await setDoc(ref, data);
@@ -47,4 +49,9 @@ export class AbstractRepository<T extends IAppEntity> {
       return fetchedData as T;
     },
   };
+
+  generateId(): string {
+    const collectionRef = collection(this.firestore, this.collectionName);
+    return doc(collectionRef).id;
+  }
 }
