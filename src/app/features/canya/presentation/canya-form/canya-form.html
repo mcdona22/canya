@@ -1,5 +1,5 @@
 <div class="standard-wrapper centred-max-width form-general">
-  <div class="screen-title"> {{ title() }}</div>
+  <div class="screen-title"> {{ pageTitle() }}</div>
   <div
     class="form"
     [formGroup]="form"
@@ -7,8 +7,17 @@
     <mat-form-field>
       <mat-label>Title</mat-label>
       <input
+        (input)="onInput($event, title,maxTitle)"
         formControlName="name" matInput
         placeholder="Title of your canya">
+      @if (!title.untouched && title.errors) {
+        @if (title.errors!['required']) {
+          <mat-error>You must have a title</mat-error>
+        }
+        @if (title.errors!['minlength'] || title.errors!['maxlength']) {
+          <mat-error>The title must have between {{ minTitle }} and {{ maxTitle }} characters</mat-error>
+        }
+      }
     </mat-form-field>
     <mat-form-field>
 
@@ -16,7 +25,9 @@
       <textarea
         formControlName="description" matInput
         placeholder="Add a description"
-        rows="5"
+        (input)="onInput($event, description,maxDesc)"
+
+        rows="4"
       ></textarea>
 
     </mat-form-field>
@@ -28,25 +39,10 @@
     </div>
 
 
-    <!--      @for (dateForm of selectedDates; track i; let i = $index) {-->
-    <!--        <div class="event-date-form">-->
-    <!--          <div [formGroup]="dateForm" class="event-form-row">-->
-    <!--            <mat-form-field>-->
-    <!--              <mat-label>Date</mat-label>-->
-    <!--              <input matInput formControlName="selectedDate">-->
-    <!--            </mat-form-field>-->
-    <!--          </div>-->
-    <!--        </div>-->
-
-    <!--      }-->
   </div>
 
   <div class="event-dates">
     <div class="event-form">
-      <!--      @for (thing of ['carrot', 'rabbit', 'mushroom']; track $index) {-->
-      <!--        <p>The thing at {{ $index }} is a {{ thing }}</p>-->
-      <!--      }-->
-
       @for (dateForm of dateForms; track i; let i = $index) {
         <div class="event-date-form">
           <div class="event-date-form-row"
@@ -93,6 +89,8 @@
 
   {{ formValue() | json }}
   <hr/>
+
+  {{ title.errors | json }}
 
 </div>
 

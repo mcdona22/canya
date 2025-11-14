@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import {
+  MatError,
   MatFormField,
   MatLabel,
   MatSuffix,
@@ -22,6 +23,7 @@ import {
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
 import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
+import { onInput } from '../../../../common/presentation/form-utils';
 
 @Component({
   selector: 'app-canya-form',
@@ -38,22 +40,33 @@ import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
     MatDatepickerModule,
     MatLuxonDateModule,
     MatSuffix,
+    MatError,
   ],
   templateUrl: './canya-form.html',
   styleUrl: './canya-form.scss',
 })
 export class CanyaForm {
-  readonly maxName = 20;
+  readonly maxTitle = 20;
+  readonly minTitle = 5;
   readonly maxDesc = 100;
 
   formBuilder = inject(FormBuilder);
 
-  title = input('New Canya');
+  pageTitle = input('New Canya');
   saveCaption = 'Save Canya';
   readonly minDate = new Date();
 
   form = this.formBuilder.group({
-    name: ['Book Club', [Validators.required]],
+    name: [
+      'Book Club',
+      {
+        validators: [
+          Validators.required,
+          Validators.maxLength(this.maxTitle),
+          Validators.minLength(this.minTitle),
+        ],
+      },
+    ],
     description: [null],
     selectedDates: this.formBuilder.array([]) as FormArray,
   });
@@ -70,6 +83,14 @@ export class CanyaForm {
     this.selectedDates.push(eventDateForm);
   }
 
+  get title() {
+    return this.form.controls.name;
+  }
+
+  get description() {
+    return this.form.controls.description;
+  }
+
   get dateForms(): FormGroup[] {
     return this.selectedDates.controls.map((fg) => fg as FormGroup);
   }
@@ -81,4 +102,6 @@ export class CanyaForm {
   onDeleteContactRow(index: number) {
     this.selectedDates.removeAt(index);
   }
+
+  protected readonly onInput = onInput;
 }
