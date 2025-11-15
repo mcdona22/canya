@@ -26,6 +26,7 @@ import { onInput } from '../../../../common/presentation/form-utils';
 import { ICanyaEvent, IDateSlot } from '../../data/i-canya-event';
 import { DateTime } from 'luxon';
 import { CanyaService } from '../../application/canya-service';
+import { first, tap } from 'rxjs';
 
 @Component({
   selector: 'app-canya-form',
@@ -139,6 +140,12 @@ export class CanyaForm {
       slots: slots,
     };
 
-    this.canyaService.createCanya(canya);
+    const save$ = this.canyaService.createCanya(canya);
+    save$
+      .pipe(
+        first(),
+        tap((c) => console.log(`Saved Canya`, c)),
+      )
+      .subscribe();
   }
 }

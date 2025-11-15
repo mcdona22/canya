@@ -24,6 +24,7 @@ export class AbstractRepository<T extends IAppEntity> {
     const data = this.converter.toFirestore(document as T);
 
     await setDoc(ref, data);
+    return { ...data, id: docId } as T;
   }
 
   /**
