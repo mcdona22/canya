@@ -26,7 +26,10 @@ import { onInput } from '../../../../common/presentation/form-utils';
 import { ICanyaEvent, IDateSlot } from '../../data/i-canya-event';
 import { DateTime } from 'luxon';
 import { CanyaService } from '../../application/canya-service';
-import { first, tap } from 'rxjs';
+import { catchError, first, of, tap } from 'rxjs';
+import { AuthService } from '../../../auth/application/auth-service';
+import { Router } from '@angular/router';
+import { canyasBasePath } from '../../../../routing/app-routes';
 
 @Component({
   selector: 'app-canya-form',
@@ -54,6 +57,8 @@ export class CanyaForm {
 
   formBuilder = inject(FormBuilder);
   canyaService = inject(CanyaService);
+  authService = inject(AuthService);
+  router = inject(Router);
 
   pageTitle = input('New Canya');
   saveCaption = 'Save Canya';
@@ -61,7 +66,7 @@ export class CanyaForm {
 
   form = this.formBuilder.group({
     name: [
-      'Book Club',
+      '',
       {
         validators: [
           Validators.required,
@@ -117,6 +122,10 @@ export class CanyaForm {
   }
 
   onSave() {
+    if (!this.authService.authenticated()) {
+      console.log(`You must be authenticated to create a canya`);
+      return;
+    }
     if (!this.form.valid) {
       console.warn(`The form is invalid`);
       return;
@@ -135,6 +144,7 @@ export class CanyaForm {
     console.log(`The mapped slots`, slots);
 
     const canya: ICanyaEvent = {
+      ownerId: this.authService.currentUser()!.id!,
       name: name as string,
       description: description ?? '',
       slots: slots,
@@ -144,7 +154,11 @@ export class CanyaForm {
     save$
       .pipe(
         first(),
-        tap((c) => console.log(`Saved Canya`, c)),
+        tap((c) => {
+          console.log(`Saved Canya`, c);
+          this.router.navigate(['/', canyasBasePath]).then();
+        }),
+        catchError((err) => of(console.log(`An error occurred`, err))),
       )
       .subscribe();
   }

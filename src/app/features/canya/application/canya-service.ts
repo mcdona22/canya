@@ -11,7 +11,7 @@ export class CanyaService {
 
   createCanya(canya: ICanyaEvent) {
     console.log(`CanyaService: creating canya`, canya);
-
+    // throw Error('wtf!');
     return from(this.canyaRepository.writeDocument(canya));
   }
 }

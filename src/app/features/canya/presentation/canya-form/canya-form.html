@@ -2,6 +2,7 @@
   <div class="screen-title"> {{ pageTitle() }}</div>
   <div
     class="form"
+
     [formGroup]="form"
   >
     <mat-form-field>
@@ -31,12 +32,6 @@
       ></textarea>
 
     </mat-form-field>
-    <div class="add-dates">
-      <button mat-icon-button (click)="onAddDate()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <div class="prompt">Lets add some event date informatoin</div>
-    </div>
 
 
   </div>
@@ -98,6 +93,12 @@
         </div>
       }
     </div>
+  </div>
+  <div class="add-dates">
+    <button mat-icon-button (click)="onAddDate()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <div class="prompt">Lets add some event date informatoin</div>
   </div>
 
   <div class=" buttons">

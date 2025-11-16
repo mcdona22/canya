@@ -6,6 +6,7 @@ export interface IDateSlot {
 }
 
 export interface ICanyaEvent extends IAppEntity {
+  ownerId: string;
   name: string;
   description: string;
   slots: IDateSlot[];
