@@ -26,9 +26,10 @@ import { onInput } from '../../../../common/presentation/form-utils';
 import { ICanyaEvent, IDateSlot } from '../../data/i-canya-event';
 import { DateTime } from 'luxon';
 import { CanyaService } from '../../application/canya-service';
-import { catchError, first, of, tap } from 'rxjs';
 import { AuthService } from '../../../auth/application/auth-service';
 import { Router } from '@angular/router';
+import { UiMessageService } from '../../../ui-massaging/ui-message-service';
+import { catchError, first, of, tap } from 'rxjs';
 import { canyasBasePath } from '../../../../routing/app-routes';
 
 @Component({
@@ -59,6 +60,7 @@ export class CanyaForm {
   canyaService = inject(CanyaService);
   authService = inject(AuthService);
   router = inject(Router);
+  messageService = inject(UiMessageService);
 
   pageTitle = input('New Canya');
   saveCaption = 'Save Canya';
@@ -149,16 +151,22 @@ export class CanyaForm {
       description: description ?? '',
       slots: slots,
     };
-
     const save$ = this.canyaService.createCanya(canya);
     save$
       .pipe(
+        catchError((err) => {
+          this.messageService.error(err.message, 'Houston, we have a problem!');
+          return of();
+        }),
         first(),
         tap((c) => {
           console.log(`Saved Canya`, c);
+          this.messageService.success(
+            `Created the canya for '${c.name}'`,
+            'Canya Created',
+          );
           this.router.navigate(['/', canyasBasePath]).then();
         }),
-        catchError((err) => of(console.log(`An error occurred`, err))),
       )
       .subscribe();
   }

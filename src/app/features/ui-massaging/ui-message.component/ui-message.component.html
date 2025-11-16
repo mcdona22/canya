@@ -1,0 +1,20 @@
+<div class="snack-component">
+
+  <div class="snack-title ">
+    <div class="icon">
+      <mat-icon [ngClass]="snackData.className" class="snack-icon">{{ snackData.icon }}</mat-icon>
+    </div>
+    <div class="">{{ snackData.title }}</div>
+    <div class="flex-spacer"></div>
+    <mat-icon class="cancel-icon" (click)="closeSnack()">cancel</mat-icon>
+
+
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div class="snack-message-panel">
+    {{ snackData.message }}
+
+  </div>
+
+
+</div>

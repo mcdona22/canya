@@ -18,7 +18,6 @@ export class AbstractRepository<T extends IAppEntity> {
 
   async writeDocument(document: IAppEntity) {
     const docId = document.id || this.generateId();
-
     const docCollection = collection(this.firestore, this.collectionName);
     const ref = doc(docCollection, docId);
     const data = this.converter.toFirestore(document as T);

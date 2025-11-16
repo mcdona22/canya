@@ -10,8 +10,11 @@ export class CanyaService {
   canyaRepository = inject(CanyaRepository);
 
   createCanya(canya: ICanyaEvent) {
-    console.log(`CanyaService: creating canya`, canya);
-    // throw Error('wtf!');
-    return from(this.canyaRepository.writeDocument(canya));
+    try {
+      console.log(`CanyaService: creating canya`, canya);
+      return from(this.canyaRepository.writeDocument(canya));
+    } catch (error) {
+      throw new Error((error as Error).message);
+    }
   }
 }
