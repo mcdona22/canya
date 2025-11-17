@@ -1,0 +1,80 @@
+$success-text: #004f4f;
+//$error-text: #93000a;
+$error-text: red;
+$inverse-text: #2d3131;
+
+@use '@angular/material' as mat;
+//@use 'sass:map';
+// Required for map.get()
+
+//$primary-color: map.get(theme.$primary-palette, 50);
+$success-color: var(--mat-sys-on-surface);
+
+//$accent-color: map.get(theme.$secondary-palette, 70);
+//$warning-color: map.get(theme.$error-palette, 70);
+
+//$background: var(--mat-sys-surface);
+:root {
+  @include mat.snack-bar-overrides((
+    button-color: var(--mat-sys-primary-color),
+    container-color: var(--mat-sys-surface),
+    supporting-text-color: yelllow,
+  ));
+}
+
+.snack-component {
+  border: none;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  //  color: var(--mat-sys-on-surface-variant); // Text color for this variant surface
+
+
+  .snack-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    //padding: 0.5rem;
+  }
+
+  .divider {
+    margin: .3rem;
+    height: 10px;
+    color: var(--mat-sys-on-surface);
+
+  }
+
+  .snack-title > mat-icon:last-child {
+    margin-left: auto;
+    color: var(--mat-sys-primary);
+    //color: yellow;
+  }
+
+
+}
+
+
+// push the close icon to the right and use text color for it
+
+
+.close-button {
+  color: greenyellow;
+}
+
+
+.feedback-error {
+
+  color: $error-text;
+}
+
+.feedback-warning {
+  color: $error-text;
+}
+
+.feedback-success, .feedback-info {
+
+  color: var(--mat-sys-primary-fixed);
+  //color: green;
+
+}

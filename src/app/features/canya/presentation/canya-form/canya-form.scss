@@ -1,0 +1,61 @@
+.form-general {
+  max-width: 500px;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-dates {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+
+  .prompt {
+    font-size: 1.2rem;
+  }
+
+  button {
+    color: var(--mat-sys-primary);
+  }
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: end;
+  align-items: end;
+
+  button {
+    width: 130px;
+  }
+}
+
+.event-date-form-row {
+  display: flex;
+  //flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  .delete-control {
+    color: darkred;
+    font-size: 1.1rem;
+
+  }
+
+
+}
+
+.event-date-error > mat-error {
+  //margin: 0 auto;
+  text-align: center;
+}
+
+
