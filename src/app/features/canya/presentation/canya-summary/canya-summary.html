@@ -1,0 +1,18 @@
+<div class="canya-summary-wrapper">
+  <!--  <p>{{ canya().name }}</p>-->
+  <!--  <p>{{ canya().description }}</p>-->
+
+  <mat-list-item>
+    <mat-icon matListItemIcon>event</mat-icon>
+    <div class="canya-title" matListItemTitle>{{ canya().name }}</div>
+    <div matListItemLine>{{ canya().description }}</div>
+    @if (canya().findEarliestSlot() != undefined) {
+      {{ canya().findEarliestSlot()!.toFormat('ccc dd MMM yy') }}
+      <!--      {{ canya().slots | json }}-->
+
+        <!--      <div matListItemLine>{{ canya().findEarliestSlot()!.selectedDate | date }}</div>-->
+    }
+  </mat-list-item>
+</div>
+
+
