@@ -31,4 +31,8 @@ export class CanyaEvent implements ICanyaEvent {
   toString(): string {
     return JSON.stringify(this);
   }
+
+  canyaUsers(): string[] {
+    return [this.ownerId];
+  }
 }

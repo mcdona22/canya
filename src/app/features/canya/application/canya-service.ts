@@ -4,12 +4,14 @@ import { CanyaRepository } from '../data/canya-repository';
 import { from, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CanyaEvent } from '../data/CanyaEvent';
+import { AppUserRepository } from '../../app-user/data/app-user-repository';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CanyaService {
   canyaRepository = inject(CanyaRepository);
+  appUserRepository = inject(AppUserRepository);
 
   createCanya(canya: ICanyaEvent) {
     try {
@@ -28,5 +30,11 @@ export class CanyaService {
     return toSignal(canyas$, {
       initialValue: [],
     });
+  }
+
+  watchRelevantCanyas(IDs: string[]) {
+    const users$ = this.appUserRepository.watchDocumentsInList(IDs);
+
+    return toSignal(users$, { initialValue: [] });
   }
 }

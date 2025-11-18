@@ -4,6 +4,7 @@ import {
   collection,
   collectionSnapshots,
   doc,
+  documentId,
   Firestore,
   FirestoreDataConverter,
   query,
@@ -11,6 +12,7 @@ import {
   QueryDocumentSnapshot,
   setDoc,
   Timestamp,
+  where,
 } from '@angular/fire/firestore';
 import { map } from 'rxjs';
 import { DateTime } from 'luxon';
@@ -68,6 +70,21 @@ export class AbstractRepository<T extends IAppEntity> {
 
     await setDoc(ref, data);
     return { ...data, id: docId } as T;
+  }
+
+  watchDocumentsInList(docIds: string[] = []) {
+    const maxIDs = 10;
+
+    const uniqueIds = Array.from(new Set(docIds));
+    if (uniqueIds.length > maxIDs)
+      throw new Error(
+        `Can only query for a maximum of ${maxIDs} using tne IN operator`,
+      );
+
+    return this.watchCollection([
+      where(documentId(), 'in', uniqueIds),
+      where(documentId(), 'in', uniqueIds),
+    ]);
   }
 
   /**

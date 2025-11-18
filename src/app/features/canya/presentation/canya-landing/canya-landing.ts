@@ -17,6 +17,7 @@ export class CanyaLanding {
   canyaService = inject(CanyaService);
 
   canyas = this.canyaService.watchAllCanyas();
+
   orderedCanyas = computed(() => {
     // 1. Create a shallow copy of the array to avoid mutating the signal's value
     const canyasCopy = [...this.canyas()];
@@ -34,8 +35,6 @@ export class CanyaLanding {
       return date1 - date2;
     });
   });
-
-  constructor() {}
 
   onNewClick() {
     const path = `/${canyasBasePath}/new`;
