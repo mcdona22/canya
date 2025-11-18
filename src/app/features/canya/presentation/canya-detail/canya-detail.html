@@ -1,0 +1,8 @@
+<p>canya-detail works!</p>
+
+@if (canya()) {
+  <h1>{{ canya().name }}</h1>
+  {{ canya() | json }}
+} @else {
+  Waiting ...
+}

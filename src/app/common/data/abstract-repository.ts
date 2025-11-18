@@ -4,6 +4,7 @@ import {
   collection,
   collectionSnapshots,
   doc,
+  docSnapshots,
   documentId,
   Firestore,
   FirestoreDataConverter,
@@ -14,7 +15,7 @@ import {
   Timestamp,
   where,
 } from '@angular/fire/firestore';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { DateTime } from 'luxon';
 
 function convertTimestampsToDates(data: any): any {
@@ -70,6 +71,17 @@ export class AbstractRepository<T extends IAppEntity> {
 
     await setDoc(ref, data);
     return { ...data, id: docId } as T;
+  }
+
+  watchDocument(id: string): Observable<T | null> {
+    const path = `${this.collectionName}/${id}`;
+    const docRef = doc(this.firestore, path).withConverter(this.converter);
+    const docSnapshots$ = docSnapshots(docRef);
+    return docSnapshots$.pipe(
+      map((snapshot) => {
+        return snapshot.exists() ? (snapshot.data() as T) : null;
+      }),
+    );
   }
 
   watchDocumentsInList(docIds: string[] = []) {

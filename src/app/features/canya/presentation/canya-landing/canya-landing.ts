@@ -41,4 +41,10 @@ export class CanyaLanding {
     console.log(`New Canya navigation`, path);
     this.router.navigateByUrl(path).then();
   }
+
+  onClick(id: string) {
+    const path = `/${canyasBasePath}/${id}`;
+    console.log(`Canya detail navigation`, path);
+    this.router.navigateByUrl(path).then();
+  }
 }

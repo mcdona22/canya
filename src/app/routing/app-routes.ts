@@ -3,6 +3,8 @@ import { LandingPage } from '../features/landing-page/landing-page';
 import { Gangs } from '../features/gangs/gangs';
 import { CanyaLanding } from '../features/canya/presentation/canya-landing/canya-landing';
 import { CanyaForm } from '../features/canya/presentation/canya-form/canya-form';
+import { CanyaDetail } from '../features/canya/presentation/canya-detail/canya-detail';
+import { canyaResolver } from '../features/canya/application/canya-resolver';
 
 export const canyasBasePath = 'canya';
 
@@ -18,6 +20,12 @@ export const routes: Routes = [
     children: [
       { path: '', title: 'All Canyas', component: CanyaLanding },
       { path: `new`, component: CanyaForm, title: 'New Canya' },
+      {
+        path: `:id`,
+        component: CanyaDetail,
+        title: 'Canya Detail',
+        resolve: { canya: canyaResolver },
+      },
     ],
   },
 ];
