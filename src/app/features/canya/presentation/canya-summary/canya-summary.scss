@@ -1,0 +1,17 @@
+.canya-summary-wrapper {
+  padding: 1.5rem;
+  border: solid 1px var(--mat-sys-secondary-fixed);
+  border-radius: 12px;
+
+  mat-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .canya-title {
+      font-size: 1.3rem;
+      padding-bottom: .5rem;
+    }
+  }
+}
+

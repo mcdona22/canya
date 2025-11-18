@@ -137,7 +137,7 @@ export class CanyaForm {
     const slots = selectedDates.map(
       (slot: { selectedDate: DateTime; comments: string }) => {
         return {
-          selectedDate: slot.selectedDate.toJSDate(),
+          selectedDate: slot.selectedDate,
           comment: slot.comments ?? '',
         } as IDateSlot;
       },

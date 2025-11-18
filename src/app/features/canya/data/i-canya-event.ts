@@ -1,7 +1,8 @@
 import { IAppEntity } from '../../../common/data/i-app-entity';
+import { DateTime } from 'luxon';
 
 export interface IDateSlot {
-  selectedDate: Date;
+  selectedDate: DateTime;
   comment: string;
 }
 
