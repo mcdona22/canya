@@ -3,12 +3,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { canyasBasePath } from '../../../../routing/app-routes';
 import { CanyaService } from '../../application/canya-service';
-import { JsonPipe } from '@angular/common';
 import { CanyaSummary } from '../canya-summary/canya-summary';
 
 @Component({
   selector: 'app-canya-landing',
-  imports: [MatButtonModule, JsonPipe, CanyaSummary],
+  imports: [MatButtonModule, CanyaSummary],
   templateUrl: './canya-landing.html',
   styleUrl: './canya-landing.scss',
 })
@@ -39,6 +38,12 @@ export class CanyaLanding {
   onNewClick() {
     const path = `/${canyasBasePath}/new`;
     console.log(`New Canya navigation`, path);
+    this.router.navigateByUrl(path).then();
+  }
+
+  onClick(id: string) {
+    const path = `/${canyasBasePath}/${id}`;
+    console.log(`Canya detail navigation`, path);
     this.router.navigateByUrl(path).then();
   }
 }

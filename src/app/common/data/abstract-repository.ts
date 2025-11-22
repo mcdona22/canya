@@ -4,6 +4,7 @@ import {
   collection,
   collectionSnapshots,
   doc,
+  docSnapshots,
   documentId,
   Firestore,
   FirestoreDataConverter,
@@ -11,36 +12,13 @@ import {
   QueryConstraint,
   QueryDocumentSnapshot,
   setDoc,
-  Timestamp,
   where,
 } from '@angular/fire/firestore';
-import { map } from 'rxjs';
-import { DateTime } from 'luxon';
-
-function convertTimestampsToDates(data: any): any {
-  if (data === null || typeof data !== 'object') {
-    return data;
-  }
-
-  // 🚨 Direct type check using instanceof
-  if (data instanceof Timestamp) {
-    return DateTime.fromMillis(data.toMillis());
-  }
-
-  if (Array.isArray(data)) {
-    // If it's an array, map over its elements and recurse
-    return data.map(convertTimestampsToDates);
-  }
-
-  // If it's a plain object, iterate over keys and recurse
-  const processedData: Record<string, any> = {};
-  for (const key in data) {
-    if (Object.prototype.hasOwnProperty.call(data, key)) {
-      processedData[key] = convertTimestampsToDates(data[key]);
-    }
-  }
-  return processedData;
-}
+import { map, Observable } from 'rxjs';
+import {
+  convertDateTimeToDate,
+  convertTimestampsToDates,
+} from './conversion-utils';
 
 export type EntityType = 'canya-events' | 'app-users';
 
@@ -68,8 +46,21 @@ export class AbstractRepository<T extends IAppEntity> {
     const ref = doc(docCollection, docId);
     const data = this.converter.toFirestore(document as T);
 
+    console.log(`The transformed interface inc dates`, data);
+
     await setDoc(ref, data);
     return { ...data, id: docId } as T;
+  }
+
+  watchDocument(id: string): Observable<T | null> {
+    const path = `${this.collectionName}/${id}`;
+    const docRef = doc(this.firestore, path).withConverter(this.converter);
+    const docSnapshots$ = docSnapshots(docRef);
+    return docSnapshots$.pipe(
+      map((snapshot) => {
+        return snapshot.exists() ? (snapshot.data() as T) : null;
+      }),
+    );
   }
 
   watchDocumentsInList(docIds: string[] = []) {
@@ -81,10 +72,9 @@ export class AbstractRepository<T extends IAppEntity> {
         `Can only query for a maximum of ${maxIDs} using tne IN operator`,
       );
 
-    return this.watchCollection([
-      where(documentId(), 'in', uniqueIds),
-      where(documentId(), 'in', uniqueIds),
-    ]);
+    const docs$ = this.watchCollection([where(documentId(), 'in', uniqueIds)]);
+    // docs$.pipe(tap((docs) => console.log(`Found some docs`, docs))).subscribe();
+    return docs$;
   }
 
   /**
@@ -98,7 +88,7 @@ export class AbstractRepository<T extends IAppEntity> {
   private converter: FirestoreDataConverter<IAppEntity> = {
     toFirestore(doc: T) {
       const { id, ...rest } = doc;
-      return rest;
+      return convertDateTimeToDate(rest);
     },
 
     fromFirestore(snapshot: QueryDocumentSnapshot) {

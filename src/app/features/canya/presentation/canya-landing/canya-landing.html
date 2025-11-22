@@ -8,7 +8,7 @@
 
   <div class="content">
     @for (canya of orderedCanyas(); track canya.id) {
-      <div class="canya-summary">
+      <div (click)="onClick(canya.id!)" class="canya-summary">
         <app-canya-summary [canya]="canya"/>
       </div>
     }

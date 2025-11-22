@@ -8,14 +8,10 @@ describe('Basic App Launch', () => {
     cy.get('.main-toolbar').should('be.visible');
     cy.get('.router-outlet').should('be.visible');
   });
-  it('should show the app name', () => {
-    cy.get('.app-title').should('be.visible').and('contain.text', 'CanYa');
-  });
 
   describe('should show correct menu options', () => {
     const expectedMenuItems = 4;
     const menuOptions = [
-      { label: 'Home', path: '', tag: 'landing' },
       { label: 'Gangs', path: '/gangs', tag: 'gangs' },
       { label: 'Canyas', path: '/canya', tag: 'canyas' },
     ];

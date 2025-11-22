@@ -1,0 +1,55 @@
+/* Base for the entire page container: Center content vertically and horizontally */
+.landing-container {
+  /* Adjusted to use vh for full screen coverage on landing */
+  min-height: 100vh;
+  padding: 6rem 1rem;
+}
+
+/* Custom gradient text effect for the main heading */
+.hero-heading {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /* Use Cyan (Primary) and Orange (Tertiary) colors from the theme */
+  background-image: linear-gradient(135deg, var(--mat-sys-primary, #00BCD4) 0%, var(--mat-sys-tertiary, #FF9800) 100%);
+}
+
+.cta {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 4rem;
+}
+
+.graphic {
+
+  svg {
+    color: yellow;
+    height: 80px;
+    width: 80px;
+  }
+
+}
+
+/* Responsive adjustments for large screens */
+@media (min-width: 1024px) {
+  .hero-heading {
+    font-size: 6rem;
+  }
+}
+
+.primary-button {
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  background-color: var(--mat-sys-primary, #00BCD4);
+  color: var(--mat-sys-on-primary, #000000);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+}
+
+.primary-button:hover {
+  background-color: var(--mat-sys-primary-light, #4DD0E1);
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.8);
+  transform: translateY(-2px);
+}

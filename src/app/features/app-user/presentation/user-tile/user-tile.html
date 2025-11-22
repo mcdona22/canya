@@ -1,0 +1,29 @@
+<div class="user-tile-wrapper">
+  <!--  <div class="email">{{ appUser().email ?? '' }}</div>-->
+  <!--  <div class="email">{{ appUser().photoURL ?? '' }}</div>-->
+  <div class="photo">
+    <img [matTooltip]="appUser().displayName"
+         matTooltipPosition="after"
+         matTooltipHideDelay="500"
+         matTooltipShowDelay="0"
+         matTooltipTouchGestures="on"
+         [src]="appUser()!.photoURL" alt="">
+  </div>
+  @if (showName()) {
+    <div class="user-info"
+         [matTooltip]="appUser().displayName"
+         matTooltipPosition="after"
+         matTooltipHideDelay="500"
+         matTooltipShowDelay="0"
+         matTooltipTouchGestures="on"
+    >
+      <div class="name">{{ appUser().displayName }}</div>
+      <!--    <div class="email">{{ appUser().email }}</div>-->
+    </div>
+  }
+
+
+</div>
+
+
+

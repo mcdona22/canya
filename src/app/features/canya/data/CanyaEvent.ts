@@ -18,7 +18,7 @@ export class CanyaEvent implements ICanyaEvent {
 
   findEarliestSlot(): DateTime | undefined {
     if (this.slots.length == 0) return undefined;
-    console.log(`We have some slots for ${this.name} - lets reduce`, this);
+    // console.log(`We have some slots for ${this.name} - lets reduce`, this);
     const earliestSlot = this.slots.reduce((earliest, current) => {
       if (current.selectedDate.toMillis() < earliest.selectedDate.toMillis()) {
         return current;
