@@ -1,0 +1,28 @@
+.user-tile-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  //border: 1px solid white;
+  //border-radius: 12px;
+  //padding: .75rem .25rem;
+}
+
+.user-info {
+  .name {
+    font-size: 1.15rem;
+  }
+
+}
+
+
+.photo {
+  --photo-size: 50px;
+
+  img {
+    height: var(--photo-size);
+    width: var(--photo-size);
+    border-radius: 50%;
+  }
+
+
+}

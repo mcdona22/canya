@@ -1,0 +1,19 @@
+.canya-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.canya-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+}
+
+.slots-heading {
+  font-size: 1.15rem;
+  text-align: center;
+}

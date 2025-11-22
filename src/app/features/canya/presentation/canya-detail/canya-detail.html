@@ -1,8 +1,30 @@
-<p>canya-detail works!</p>
+<div class="standard-wrapper centred-max-width ">
+  <div class="canya-wrapper">
 
-@if (canya()) {
-  <h1>{{ canya().name }}</h1>
-  {{ canya() | json }}
-} @else {
-  Waiting ...
-}
+    <div class="canya-header">
+      @if (canyaOwner(); as owner) {
+
+        <app-user-tile class="" [appUser]="owner" [showName]="false"/>
+      }
+      <div class="canya-title">
+        {{ canya()!.name }}
+      </div>
+    </div>
+
+    <div class="comments">{{ canya()?.description }}</div>
+
+
+    <div class="slots">
+      <div class="slots-heading">
+        Slots
+      </div>
+
+
+      @for (slot of canya()?.slots; track $index) {
+        <app-time-slot [slot]="slot"/>
+      }
+    </div>
+  </div>
+
+
+</div>

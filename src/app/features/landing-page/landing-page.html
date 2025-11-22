@@ -1,8 +1,145 @@
-<div class="standard-wrapper centred-max-width">
+<div
+  class="centred-max-width landing-container w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-white text-center">
 
-  <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur cupiditate dicta, facilis fuga
-    hic
-    illo illum in ipsa iusto laboriosam, laudantium minima nam non perspiciatis quia recusandae sed soluta sunt! Aliquam
-    dignissimos enim fugiat perspiciatis porro quidem quisquam reprehenderit, ullam.
+  <!-- Hero Text: Main Headline -->
+  <h1 class="hero-heading">
+    Propose, Share, Converge, Decide.
+  </h1>
+
+  <!-- Strap Line -->
+  <p class="text-2xl text-gray-400 max-w-2xl mx-auto mt-6 mb-12 font-light">
+    CanYa see and balance availability to quickly decide the best date or time for
+    an activity in your group. Helps prevent bouncing messages by showing who can do
+    what and when
   </p>
+
+  <div class="cta">
+    <button mat-flat-button>Create a Canya</button>
+  </div>
+
+  <div class="graphic">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 100 100"
+         fill="none"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+      <!-- Define the brand colors as variables for easy updates -->
+      <defs>
+        <style>
+          .cyan {
+            stroke: #00BCD4;
+          }
+
+          /* Primary color */
+          .orange {
+            stroke: #FF9800;
+          }
+
+          /* Tertiary color */
+          .stroke-width {
+            stroke-width: 8;
+          }
+        </style>
+      </defs>
+
+      <!--
+        Path 1 (Cyan): Starts high-left, sweeps down and inwards, suggesting time or movement.
+        This path hints at the outer edge of a 'C' shape.
+      -->
+      <path d="M 20 25 C 20 60, 80 40, 50 50"
+            class="cyan stroke-width"/>
+
+      <!--
+        Path 2 (Orange): Starts low-right, sweeps up and inwards, opposing the cyan path.
+        The paths meet and cross near the center point (50, 50), symbolizing convergence.
+      -->
+      <path d="M 80 75 C 80 40, 20 60, 50 50"
+            class="orange stroke-width"/>
+
+      <!-- Central Convergence Point: A small circle where the paths meet, emphasizing the "solution" -->
+      <circle cx="50" cy="50" r="4" fill="#FF9800"/>
+
+    </svg>
+  </div>
+  <div class="graphic">
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5"
+         stroke-linecap="round" stroke-linejoin="round">
+
+      <!-- Central Convergence Point (Tertiary/Orange - Pulsing Focus) -->
+      <circle cx="12" cy="12" r="1.5" fill="#FF9800" class="convergence-point"/>
+
+      <!-- Path 1 (Cyan): Swirling in from Top-Left -->
+      <path d="M4 4 C 6 10, 10 10, 12 12" stroke="#00BCD4" class="vortex-path"/>
+
+      <!-- Path 2 (Orange): Swirling in from Top-Right -->
+      <path d="M20 4 C 18 10, 14 10, 12 12" stroke="#FF9800" class="vortex-path"/>
+
+      <!-- Path 3 (Cyan): Swirling in from Bottom-Right -->
+      <path d="M20 20 C 18 14, 14 14, 12 12" stroke="#00BCD4" class="vortex-path"/>
+
+      <!-- Path 4 (Orange): Swirling in from Bottom-Left -->
+      <path d="M4 20 C 6 14, 10 14, 12 12" stroke="#FF9800" class="vortex-path"/>
+    </svg>
+
+  </div>
+  <div class="graphic">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 100 100"
+         fill="none"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+      <!-- Define the brand colors and settings -->
+      <defs>
+        <style>
+          .cyan {
+            stroke: #00BCD4;
+          }
+
+          /* Primary color (CanYa Cyan) */
+          .orange {
+            stroke: #FF9800;
+          }
+
+          /* Tertiary color (CanYa Orange) */
+          .stroke-width {
+            stroke-width: 10;
+          }
+
+          /* Thicker stroke for more impact */
+        </style>
+      </defs>
+
+      <!-- 1. The 'C' Glyph (Cyan) -->
+      <!-- Creates a large, open C-shape using a smooth, sweeping curve. -->
+      <path d="M 65 15 C 20 25, 20 75, 65 85"
+            class="cyan stroke-width"/>
+
+      <!-- 2. The 'Y' Glyph (Orange) -->
+      <!-- The 'Y' is positioned to the right, fitting neatly into the open side of the 'C'. -->
+
+      <!-- Top left branch of Y -->
+      <path d="M 75 30 L 60 50" class="orange stroke-width"/>
+
+      <!-- Top right branch of Y -->
+      <path d="M 85 30 L 60 50" class="orange stroke-width"/>
+
+      <!-- Stem of Y, pointing toward the center of the C's open space -->
+      <path d="M 60 50 L 70 70" class="orange stroke-width"/>
+
+      <!-- Convergence Point: A small circle where the Y stem ends, emphasizing the solution. -->
+      <circle cx="70" cy="70" r="4" fill="#FF9800"/>
+
+    </svg>
+    <!-- Call to Action Button -->
+    <!--  <div>-->
+    <!--    <button class="primary-button px-12 py-4 rounded-xl font-bold text-xl hover:shadow-xl">-->
+    <!--      Start Your Canya Now-->
+    <!--    </button>-->
+    <!--  </div>-->
+  </div>
 </div>
