@@ -8,7 +8,7 @@ import { MatIcon } from '@angular/material/icon';
 import { canyasBasePath } from '../routing/app-routes';
 
 const menuOptions = [
-  { label: 'Home', path: '', tag: 'landing' },
+  // { label: 'Home', path: '', tag: 'landing' },
   { label: 'Gangs', path: '/gangs', tag: 'gangs' },
   {
     label: 'Canyas',

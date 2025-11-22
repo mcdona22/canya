@@ -2,18 +2,19 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CanyaService } from '../../application/canya-service';
 import { UserTile } from '../../../app-user/presentation/user-tile/user-tile';
-import { JsonPipe } from '@angular/common';
 import { TimeSlot } from '../time-slot/time-slot';
 
 @Component({
   selector: 'app-canya-detail',
-  imports: [UserTile, JsonPipe, TimeSlot],
+  imports: [UserTile, TimeSlot],
   templateUrl: './canya-detail.html',
   styleUrl: './canya-detail.scss',
 })
 export class CanyaDetail implements OnInit {
   route = inject(ActivatedRoute);
   canyaService = inject(CanyaService);
+  readonly imagePath = 'images/create-club.jpg';
+
   canyaId = signal<string | undefined>(undefined);
   canya = this.canyaService.watchCanya(this.canyaId);
   userIds = computed(() => this.canya()?.canyaUsers() ?? []);

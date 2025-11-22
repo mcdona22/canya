@@ -41,6 +41,12 @@ mat-sidenav {
   display: none; // mobile first
 }
 
+.logo {
+  height: 100px;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
 
 .spacer {
   flex: 1;
