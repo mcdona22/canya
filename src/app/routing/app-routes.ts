@@ -13,7 +13,13 @@ export const routes: Routes = [
     component: LandingPage,
     title: 'Canya Home',
   },
-  { path: 'gangs', component: Gangs, title: 'Gangs' },
+  {
+    path: 'gangs',
+    children: [
+      { path: '', component: Gangs, title: 'Gangs' },
+      { path: ':id', component: Gangs, title: 'With ID' },
+    ],
+  },
   {
     path: canyasBasePath,
     children: [
