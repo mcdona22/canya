@@ -1,0 +1,14 @@
+<div class="wrapper">
+
+  <div class="name">
+    {{ appUser().displayName }}
+  </div>
+  <img
+
+    [src]="appUser()!.photoURL" alt="">
+  <div class="email">
+    {{ appUser().email }}
+
+  </div>
+  <hr>
+</div>

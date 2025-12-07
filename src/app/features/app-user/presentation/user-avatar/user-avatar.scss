@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  gap: 1rem;
+  font-size: 1.2rem;
+
+  .email {
+    font-size: 1.0rem;
+  }
+
+  img {
+    --photo-size: 120px;
+
+    height: var(--photo-size);
+    width: var(--photo-size);
+    border-radius: 50%;
+  }
+
+
+}
