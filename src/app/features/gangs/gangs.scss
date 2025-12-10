@@ -1,6 +1,8 @@
 .buttons {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  //gap: 2rem;
+  align-items: end;
 }
 
 .auth-button {

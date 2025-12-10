@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { LandingPage } from '../features/landing-page/landing-page';
-import { Gangs } from '../features/gangs/gangs';
 import { CanyaLanding } from '../features/canya/presentation/canya-landing/canya-landing';
 import { CanyaForm } from '../features/canya/presentation/canya-form/canya-form';
 import { CanyaDetail } from '../features/canya/presentation/canya-detail/canya-detail';
@@ -13,7 +12,37 @@ export const routes: Routes = [
     component: LandingPage,
     title: 'Canya Home',
   },
-  { path: 'gangs', component: Gangs, title: 'Gangs' },
+  {
+    path: 'gangs',
+    loadChildren: () => {
+      console.log(`Loading child routes`);
+      return import('../features/gangs/gang-routes').then(
+        (m) => m.GANGS_ROUTES,
+      );
+    },
+    // children: [
+    //   { path: '', component: Gangs, title: 'Gangs' },
+    //   {
+    //     path: ':id',
+    //     component: GangsLayoutComponent,
+    //     providers: [CanyaDetailStore],
+    //     // resolve: [detailResolver],
+    //     children: [
+    //       {
+    //         path: '',
+    //         component: GangDetail,
+    //
+    //         title: 'With ID',
+    //       },
+    //       {
+    //         path: 'edit',
+    //         component: GangDetail,
+    //         title: 'Editing',
+    //       },
+    //     ],
+    //   },
+    // ],
+  },
   {
     path: canyasBasePath,
     children: [

@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { MatButton } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-gangs',
-  imports: [],
+  imports: [MatButton, RouterLink, MatIconModule],
   templateUrl: './gangs.html',
   styleUrl: './gangs.scss',
 })
