@@ -1,11 +1,17 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import {
+  patchState,
+  signalStore,
+  withHooks,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 
 type CanyaDetailState = {
   id: string;
 };
 
 const initialState: CanyaDetailState = {
-  id: '',
+  id: 'no-id-provided',
 };
 
 export const CanyaDetailStore = signalStore(
@@ -18,4 +24,12 @@ export const CanyaDetailStore = signalStore(
       });
     },
   })),
+  withHooks({
+    onInit(store) {
+      console.log(`Init`, `"${store.id()}"`);
+    },
+    onDestroy(store) {
+      console.log(`Destroy`, `"${store.id()}"`);
+    },
+  }),
 );
